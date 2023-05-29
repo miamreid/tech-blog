@@ -5,7 +5,7 @@ const withAuth = require('../utils/auth');
 const sequelize = require('../config/connection');
 
 router.get('/', async (req, res) => {
-  Post.findAll({
+  Blog.findAll({
     attributes: ['id', 'title', 'content', 'date_created'],
     include: [
       {
@@ -23,7 +23,7 @@ router.get('/', async (req, res) => {
     ],
   })
   .then(dbBlogData => {
-    const blogs = dbBlogData.map(post => post.get({ plain: true }));
+    const blogs = dbBlogData.map(blog => blog.get({ plain: true }));
 
     res.render('homepage', {
       blogs,
@@ -37,7 +37,7 @@ router.get('/', async (req, res) => {
 });
 
 router.get('/blog/:id', async (req, res) => {
-  Post.findOne({
+  Blog.findOne({
     where: {
       id: req.params.id,
     },
@@ -46,7 +46,7 @@ router.get('/blog/:id', async (req, res) => {
       {
         model: Comment,
         attributes: ['id', 'comment', 'blog_id', 'user_id', 'date_created'],
-        inclide: {
+        include: {
           model: User,
           attributes: ['username'],
         },
@@ -65,7 +65,7 @@ router.get('/blog/:id', async (req, res) => {
     const blog = dbBlogData.get({ plain: true});
 
     res.render('single-post', {
-      post,
+      blog,
       loggedIn: req.session.loggedIn,
     });
   })
