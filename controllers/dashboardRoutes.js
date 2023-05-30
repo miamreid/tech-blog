@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const { Blog, User, Comment } = require('../models');
-const withAuth = require('../authutils/auth');
+const withAuth = require('../utils/auth');
 
 const sequelize = require('../config/connection');
 
@@ -9,15 +9,19 @@ router.get('/', withAuth, (req, res) => {
         where: {
             user_id: req.session.user_id,
         },
-        attributes: ['id', 'title', 'date_created', 'content'],
+        attributes: ['id', 'title', 'content'],
         include: [
             {
                 model: Comment,
-                attributes: ['id', 'comment', 'blog_id', 'user_id', 'date_created'],
+                attributes: ['id', 'comment', 'blog_id', 'user_id'],
                 include: {
                     model: User,
                     attributes: ['username'],
                 },
+            },
+            {
+                model: User,
+                attributes: ['username'],
             },
         ],
     })
@@ -33,11 +37,11 @@ router.get('/', withAuth, (req, res) => {
 
 router.get('/edit/:id', withAuth, (req, res) => {
     Blog.findByPk(req.params.id, {
-        attributes: ['id', 'title', 'date_created', 'content'],
+        attributes: ['id', 'title', 'content'],
         include: [
             {
                 model: Comment,
-                attributes: ['id', 'comment', 'blog_id', 'user_id', 'date_created'],
+                attributes: ['id', 'comment', 'blog_id', 'user_id'],
                 include: {
                     model: User,
                     attributes: ['username'],
@@ -53,7 +57,7 @@ router.get('/edit/:id', withAuth, (req, res) => {
         if (dbBlogData) {
             const blog = dbBlogData.get({ plain: true });
 
-            res.render('edit-blog', {
+            res.render('editBlog', {
                 blog,
                 loggedIn: true,
             });

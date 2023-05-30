@@ -12,8 +12,11 @@ Comment.init(
             autoIncrement: true
         },
         comment: {
-            type: DataTypes.TEXT,
+            type: DataTypes.STRING,
             allowNull: false,
+            validate: {
+                leng: [1]
+            }
         },
         user_id: {
             type: DataTypes.INTEGER,
@@ -32,10 +35,9 @@ Comment.init(
     },
     {
         sequelize,
-        timestamps: false,
         freezeTableName: true,
         underscored: true,
-        modelName: 'comment',
+        modelName: 'comment'
     }
 );
 
