@@ -1,12 +1,13 @@
 const router = require('express').Router();
-const { Blog} = require('../../models');
+const { Blog, User, Comment } = require('../../models');
 const withAuth = require('../../utils/auth');
-const { post } = require('../homeRoutes');
+
+const sequelize = require('../../config/connection');
 
 router.post('/', withAuth, async (req, res) => {
   Blog.create({
     title: req.body.title,
-    content: req.body.conte,
+    content: req.body.content,
     user_id: req.session.user_id
   })
   .then(dbBlogData => res.json(dbBlogData))
@@ -19,12 +20,12 @@ router.post('/', withAuth, async (req, res) => {
 router.get('/', (req, res) => {
   Blog.findAll({
     attributes: [
-      'id', 'content', 'title', 'date_created',
+      'id', 'content', 'title',
     ],
     include: [
       {
         model: Comment,
-        attributes: ['id', 'comment', 'blog_id', 'user_id', 'date_created'],
+        attributes: ['id', 'comment', 'blog_id', 'user_id'],
         include: {
           model: User,
           attributes: ['username']
@@ -49,12 +50,12 @@ router.get('/:id', (req, res) => {
       id: req.params.id
     },
     attributes: [
-      'id', 'content', 'title', 'date_created',
+      'id', 'content', 'title',
     ],
     include: [
       {
         model: Comment,
-        attributes: ['id', 'comment', 'blog_id', 'user_id', 'date_created'],
+        attributes: ['id', 'comment', 'blog_id', 'user_id'],
         include: {
           model: User,
           attributes: ['username']

@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { User, Post, Comment } = require('../../models');
+const { User, Blog, Comment } = require('../../models');
 const withAuth = require('../../utils/auth');
 
 router.get('/', (req, res) => {
@@ -62,7 +62,7 @@ router.post('/', async (req, res) => {
   })
 });
 
-router.post('/login', async (req, res) => {
+router.post('/login', (req, res) => {
   User.findOne({ 
     where: { 
       email: req.body.email 
