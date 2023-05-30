@@ -13,8 +13,8 @@ async function newBlog(event) {
       headers: {
         'Content-Type': 'application/json'
       }
-    });
-  
+    }); 
+
     if (response.ok) {
       document.location.replace('/dashboard');
     } else {
@@ -23,3 +23,5 @@ async function newBlog(event) {
   }
   
   document.querySelector('.add-blog-btn').addEventListener('submit', newBlog);
+
+  console.log(title + ' ' + content);

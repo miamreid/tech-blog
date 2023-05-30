@@ -23,9 +23,10 @@
         <li class="nav-item">
           <a class="nav-link" href="/dashboard">Dashboard</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/logout">Logout</a>
-        </li>
+        <button id="logout" class="btn btn-outline-success logout">Logout</button>
+        {{!-- <li class="nav-item">
+          <a class="nav-link" id="logout" href="/logout">Logout</a>
+        </li> --}}
         {{else}}
         <li class="nav-item">
           <a class="nav-link" href="/login">Login</a>
@@ -40,7 +41,7 @@
     </main>
 
     {{#if loggedIn}}
-    <script src="/js/logout.js"></script>
+    <script src="/tech-blog/public/js/logout.js"></script>
     {{/if}}
 </body>
 </html>
