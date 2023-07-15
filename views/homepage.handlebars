@@ -1,11 +1,12 @@
-{{#each blogs as |blog|}}
-<div class="card border-light mb-3">
-  <div class="card-header">
-    Posted by {{{user.username}}}
-  </div>
-  <div class="card-body">
-    <h5 class="card-title"><a href="/blog/{{id}}">{{blog.title}}</a></h5>
-    <p class="card-text">{{blog.content}}</p>
-  </div>
+<div class="container" style="padding: 50px;">
+<h2>Welcome to the Tech Blog, {{user.username}}!</h2>
+{{#each blog as |blog|}}
+<a href="/blogs/{{blog.id}}">
+<div class="card">
+    <h3>{{blog.title}}</h3>
+    <p>{{blog.content}}</p>
+    <p>Posted by {{blog.user_id}}</p>
 </div>
+</a>
 {{/each}}
+</div>

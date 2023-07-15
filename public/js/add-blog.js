@@ -6,7 +6,7 @@ async function newBlog(event) {
 
     if (content && title) {
   
-    const response = await fetch('/api/blogs', {
+    const response = await fetch(`/api/blogs`, {
       method: 'POST',
       body: JSON.stringify({
         title,

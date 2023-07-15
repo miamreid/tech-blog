@@ -1,13 +1,13 @@
-{{{#each comments as |comment|}}}
+{{#each comment as |comment|}}
 
 <div class="comments">
 
     <div class="comment-meta">
-        {{{user.username}}}
+        <p>Posted by: {{user.username}}</p>
     </div>
     <div class="comment-text">
-        {{{comment}}}
+        <p>{{comment}}</p>
     </div>
 
 </div>
-{{{/each}}}
+{{/each}}

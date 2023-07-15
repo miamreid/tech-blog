@@ -15,4 +15,19 @@
 </form>
 </div>
 
+{{#each blogs as |blog|}}
+
+<div class="card">
+    <div class="card-title">
+        <h2><a href="/blog/{{blog.id}}"></a>{{blog.title}}</a></h2>
+        <p>Posted by: {{user.username}}</p>
+    </div>
+    <div class="card-content">
+        <p>{{blog.content}}</p>
+    </div>
+    <p class="hidden" id="blog-id">{{blog.id}}</p>
+</div>
+
+{{/each}}
+
 <script src="/js/add-blog.js"></script>

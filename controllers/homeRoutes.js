@@ -16,7 +16,7 @@ router.get('/', withAuth, async (req, res) => {
       ]
     });
     
-    const blogs = dbBlogData.map(blog => blog.get({ plain: true }));
+    const blogs = dbBlogData.map((blog) => blog.get({ plain: true }));
 
     res.render('homepage', {
       blogs,
