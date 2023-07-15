@@ -1,18 +1,19 @@
 async function deleteBlog(event) {
     event.preventDefault();
 
-    const id = window.location.toString().split('/')[
-        window.location.toString().split('/').length - 1
-    ];
+    const id = document.querySelector('#blog-id').innerHTML;
     
     const response = await fetch(`/api/blogs/${id}`, {
-        method: 'DELETE'
+        method: 'DELETE',
+        headers: {
+            'Content-Type': 'application/json'
+        },
     });
 
     if (response.ok) {
         document.location.replace('/dashboard/');
     } else {
-        alert(response.statusText);
+        alert('Error');
     }
 }
 

@@ -1,8 +1,10 @@
 async function newBlog(event) {
     event.preventDefault();
   
-    const title = document.querySelector('input[name="blog-title"]').value;
-    const content = document.querySelector('textarea[name="blog-content"]').value;
+    const title = document.querySelector('#title').value.trim();
+    const content = document.querySelector('#content').value.trim();
+
+    if (content && title) {
   
     const response = await fetch(`/api/blogs`, {
       method: 'POST',
@@ -12,16 +14,15 @@ async function newBlog(event) {
       }),
       headers: {
         'Content-Type': 'application/json'
-      }
+      },
     }); 
 
     if (response.ok) {
       document.location.replace('/dashboard');
     } else {
-      alert(response.statusText);
+      alert('Error');
     }
   }
+};
   
   document.querySelector('.add-blog-btn').addEventListener('submit', newBlog);
-
-  console.log(title + ' ' + content);

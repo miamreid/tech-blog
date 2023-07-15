@@ -1,4 +1,5 @@
 <div class="container" style="padding: 50px;">
+<div class="hidden" id="blog-id">{{blog.id}}</div>
 <h2>{{{blog.title}}}</h2>
 
 <p>{{{blog.content}}}</p>
@@ -10,8 +11,8 @@
 
 <form class="comment-form">
     <div class="form-floating comments container">
-        <textarea class="form-control comment" placeholder="Leave a comment here" id="floatingTextarea"></textarea>
-        <button type="submit" class="new-comment-btn btn btn-primary">Comment</button>
+        <textarea class="form-control comment" placeholder="Leave a comment here" id="comment"></textarea>
+        <button type="submit" class="new-comment btn btn-primary">Comment</button>
     </div>
 </form>
 

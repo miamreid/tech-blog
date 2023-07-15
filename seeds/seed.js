@@ -4,20 +4,23 @@ const commentData = require('./commentData');
 
 const sequelize = require('../config/connection');
 
-const seedDatabase = async () => {
-  await sequelize.sync({ force: true });
-  console.log('\n------ DATABASE SYNCED ------\n');
+const { User, Blog, Comment } = require('../models');
 
-  await userData();
+const seedDatabase = async () => {
+  await User.bulkCreate(userData, {individualHooks: true,});
   console.log('\n------ USERS SEEDED ------\n');
   
-  await blogData();
+  await Blog.bulkCreate(blogData);
   console.log('\n------ BLOGS SYNCED ------\n');
 
-  await commentData();
+  await Comment.bulkCreate(commentData);
   console.log('\n------ COMMENTS SYNCED ------\n');
 
   process.exit(0);
 };
 
-seedDatabase();
+sequelize.sync({ force: true }).then(() => {
+  seedDatabase();
+});
+console.log('\n------ DATABASE SYNCED ------\n');
+

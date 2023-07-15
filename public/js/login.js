@@ -6,21 +6,21 @@ async function login(event) {
   
     if (email && password) {
       const response = await fetch('/api/users/login', {
-        method: 'post',
+        method: 'POST',
         body: JSON.stringify({
           email,
           password
         }),
-        headers: { 'Content-Type': 'application/json' }
+        headers: { 'Content-Type': 'application/json' },
       });
   
       if (response.ok) {
-        document.location.replace('/dashboard/');
+        document.location.replace('/');
       } else {
-        alert(response.statusText);
+        alert('Error logging in');
       }
     }
-  }
+  };
   
   async function signup(event) {
     event.preventDefault();
@@ -31,7 +31,7 @@ async function login(event) {
   
     if (username && email && password) {
       const response = await fetch('/api/users', {
-        method: 'post',
+        method: 'POST',
         body: JSON.stringify({
           username,
           email,
@@ -41,12 +41,12 @@ async function login(event) {
       });
   
       if (response.ok) {
-        document.location.replace('/dashboard/');
+        document.location.replace('/');
       } else {
         alert(response.statusText);
       }
     }
-  }
+  };
   
   document.querySelector('.login').addEventListener('submit', login);
   

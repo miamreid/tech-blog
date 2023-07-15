@@ -1,12 +1,10 @@
 async function newComment(event) {
     event.preventDefault();
 
-    const comment = document.querySelector('textarea[name="comment"]').value.trim();
-    const blog_id = window.location.toString().split('/')[
-        window.location.toString().split('/').length - 1
-    ];
+    const blog_id = document.getElementById('blog-id').innerHTML;
+    const comment = document.querySelector('#comment').value.trim();
 
-    if(comment) {
+    if(content) {
         const response = await fetch('/api/comments', {
             method: 'POST',
             body: JSON.stringify({
@@ -19,11 +17,11 @@ async function newComment(event) {
         });
 
         if (response.ok) {
-            document.location.reload();
+            document.location.replace(`/blogs/${blog_id}`);
         } else {
-            alert(response.statusText);
+            alert('Error');
         }
     }
-}
+};
 
 document.querySelector('.new-comment').addEventListener('submit', newComment);
