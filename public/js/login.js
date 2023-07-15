@@ -11,16 +11,16 @@ async function login(event) {
           email,
           password
         }),
-        headers: { 'Content-Type': 'application/json' },
+        headers: { 'Content-Type': 'application/json' }
       });
   
       if (response.ok) {
         document.location.replace('/');
       } else {
-        alert('Error logging in');
+        alert('Login error: ' + response.statusText);
       }
     }
-  };
+  }
   
   async function signup(event) {
     event.preventDefault();
@@ -43,10 +43,10 @@ async function login(event) {
       if (response.ok) {
         document.location.replace('/');
       } else {
-        alert(response.statusText);
+        alert('Signup error: ' + response.statusText);
       }
     }
-  };
+  }
   
   document.querySelector('.login').addEventListener('submit', login);
   

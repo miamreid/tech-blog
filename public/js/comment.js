@@ -4,7 +4,7 @@ async function newComment(event) {
     const blog_id = document.getElementById('blog-id').innerHTML;
     const comment = document.querySelector('#comment').value.trim();
 
-    if(content) {
+    if(comment) {
         const response = await fetch('/api/comments', {
             method: 'POST',
             body: JSON.stringify({

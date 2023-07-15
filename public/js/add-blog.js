@@ -6,7 +6,7 @@ async function newBlog(event) {
 
     if (content && title) {
   
-    const response = await fetch(`/api/blogs`, {
+    const response = await fetch('/api/blogs', {
       method: 'POST',
       body: JSON.stringify({
         title,
@@ -18,7 +18,7 @@ async function newBlog(event) {
     }); 
 
     if (response.ok) {
-      document.location.replace('/dashboard');
+      document.location.replace(`/dashboard`);
     } else {
       alert('Error');
     }

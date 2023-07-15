@@ -8,27 +8,39 @@ router.get('/', async (req, res) => {
 });
 
 router.post('/', (req, res) => {
-  user_id: req.session.user_id,
   Comment.create({
-    user_id: user_id,
-    cont: req.body.cont,
+    comment: req.body.comment,
+    user_id: req.session.user_id,
     blog_id: req.body.blog_id
   })
-  .then(dbCommentData => res.status(dbCommentData))
+  .then((comment) => res.status(200).json(comment))
   .catch((err) => {
     console.log(err);
     res.json(err);
   });
 });
 
+router.put('/:id', (req, res) => {
+  Comment.update(req.body, {
+    where: {
+      id: req.params.id,
+    },
+  })
+  .then((comment) => res.status(200).json(comment))
+  .catch((err) => {
+    console.log(err);
+    res.json(err);
+  })
+});
+
 router.delete('/:id', (req, res) => {
   Comment.destroy({
     where: {
       id: req.params.id,
-    }
+    },
   })
-  .then(dbCommentData => 
-      res.status(200).json(dbCommentData))
+  .then((comment) => 
+    res.status(200).json(comment))
   .catch((err) => {
     console.log(err);
     res.json(err);

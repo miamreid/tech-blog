@@ -13,14 +13,11 @@ Blog.init(
     },
     title: {
       type: DataTypes.STRING,
-      allowNull: false,
+      defaultValue: 'Title',
     },
     content: {
-      type: DataTypes.STRING(750),
+      type: DataTypes.STRING,
       allowNull: false,
-      validate: {
-        len: [1]
-      }
     },
     user_id: {
       type: DataTypes.INTEGER,
@@ -32,6 +29,8 @@ Blog.init(
   },
   {
     sequelize,
+    timestamps: true,
+    createdAt: 'createDate',
     freezeTableName: true,
     underscored: true,
     modelName: 'blog',
