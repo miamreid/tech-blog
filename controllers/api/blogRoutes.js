@@ -17,10 +17,11 @@ router.get('/', async (req, res) => {
 });
 
 router.post('/', (req, res) => {
+  user_id = req.session.user_id;
   Blog.create({
     title: req.body.title,
     content: req.body.content,
-    user_id: req.session.user_id
+    user_id: user_id
   })
   .then((blogs) => res.status(200).json(blogs))
   .catch((err) => {
@@ -53,7 +54,7 @@ router.delete('/:id', (req, res) => {
     },
   })
   .then((blogs) => 
-      res.status(200).json(blog))
+      res.status(200).json(blogs))
   .catch((err) => {
     console.log(err);
     res.json(err);
