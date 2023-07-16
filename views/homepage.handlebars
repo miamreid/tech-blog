@@ -1,12 +1,18 @@
 <div class="container" style="padding: 50px;">
-<h2>Welcome to the Tech Blog, {{user.username}}!</h2>
+<h2>Welcome to the Tech Blog</h2>
 {{#each blog as |blog|}}
-<a href="/blogs/{{blog.id}}">
+
 <div class="card">
-    <h3>{{blog.title}}</h3>
-    <p>{{blog.content}}</p>
-    <p>Posted by {{blog.user_id}}</p>
+    <div class="card-title">
+        <h2><a href="/blogs/{{blog.id}}">{{blog.title}}</a></h2>
+        <p>Posted by: {{user.username}}</p>
+    </div>
+    <div class="card-content">
+        <p>{{blog.content}}</p>
+    </div>
+    <p class="hidden" id="blog-id">{{blog.id}}</p>
 </div>
-</a>
+
 {{/each}}
 </div>
+

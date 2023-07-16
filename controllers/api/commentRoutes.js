@@ -2,8 +2,8 @@ const router = require('express').Router();
 const { Comment } = require('../../models');
 
 router.get('/', async (req, res) => {
-  res.render('comments', {
-    loggedIn: req.session.loggedIn
+  res.render('comment', {
+    logged_in: req.session.logged_in
   });
 });
 
