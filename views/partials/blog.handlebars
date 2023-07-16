@@ -1,8 +1,8 @@
-{{#each blogs as |blog|}}
+{{#each blog as |blog|}}
 
 <div class="card">
     <div class="card-title">
-        <h2><a href="/blog/{{blog.id}}"></a>{{blog.title}}</a></h2>
+        <h2><a href="/blogs/{{blog.id}}">{{blog.title}}</a></h2>
         <p>Posted by: {{user.username}}</p>
     </div>
     <div class="card-content">

@@ -3,7 +3,7 @@ const { Blog, User, Comment } = require('../models');
 const withAuth = require('../utils/auth');
 
 
-router.get('/', withAuth, async (req, res) => {
+router.get('/', async (req, res) => {
   try {
   const dbBlogData = await Blog.findAll({
     include: [
@@ -20,7 +20,7 @@ router.get('/', withAuth, async (req, res) => {
 
     res.render('homepage', {
       blogs,
-      loggedIn: req.session.loggedIn,
+      logged_in: req.session.logged_in,
     });
   }
   catch (err) {
@@ -48,7 +48,7 @@ router.get('/dashboard', withAuth, async (req, res) => {
 
     res.render('dashboard', {
       blogs,
-      loggedIn: req.session.loggedIn,
+      logged_in: req.session.logged_in,
     });
   } catch (err) {
     res.status(500).json(err);
@@ -83,7 +83,7 @@ router.get('/blogs/:id', withAuth, async (req, res) => {
 
     res.render('blog', {
       ...blog,
-      loggedIn: req.session.loggedIn,
+      logged_in: req.session.logged_in,
     });
   }
   catch(err) {
@@ -93,7 +93,7 @@ router.get('/blogs/:id', withAuth, async (req, res) => {
 });
 
 router.get('/login', (req, res) => {
-  if (req.session.loggedIn) {
+  if (req.session.logged_in) {
     res.redirect('/');
     return;
   }

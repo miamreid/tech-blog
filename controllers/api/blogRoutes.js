@@ -9,7 +9,7 @@ router.get('/', async (req, res) => {
       }
     ],
   })
-  .then((blogs) => res.json(blogs))
+  .then((blog) => res.json(blog))
   .catch((err) => {
     console.log(err);
     res.json(err);
@@ -52,8 +52,8 @@ router.delete('/:id', (req, res) => {
       id: req.params.id,
     },
   })
-  .then((blogs) => 
-      res.status(200).json(blogs))
+  .then((blog) => 
+      res.status(200).json(blog))
   .catch((err) => {
     console.log(err);
     res.json(err);
