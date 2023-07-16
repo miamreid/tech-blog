@@ -1,6 +1,6 @@
 {{#each blogs as |blog|}}
 
-<div class="card">
+{{!-- <div class="card">
     <div class="card-title">
         <h2><a href="/blogs/{{blog.id}}">{{blog.title}}</a></h2>
         <p>Posted by: {{user.username}}</p>
@@ -9,6 +9,17 @@
         <p>{{blog.content}}</p>
     </div>
     <p style="display: none;" id="blog-id">{{blog.id}}</p>
+</div> --}}
+
+<div class="card" style="margin-bottom: 30px; margin-top: 30px;" >
+    <div class="card-header">
+        Posted By: {{user.username}} on {{blog.createDate}}
+    </div>
+    <div class="card-body">
+        <h5 class="card-title">{{blog.title}}</h5>
+        <p class="card-text">{{blog.content}}</p>
+        <a href="/blogs/{{blog.id}}" class="btn btn-info">Read More</a>
+    </div>
 </div>
 
 {{/each}}

@@ -1,6 +1,5 @@
-<div class="container" style="padding: 50px;">
-<div style="display: none;" id="blog-id">{{id}}</div>
-<h2>{{title}}</h2>
+{{!-- <div class="container" style="padding: 50px;">
+<h3>{{title}}</h3>
 
 <p>{{content}}</p>
 </div>
@@ -8,13 +7,39 @@
 <form class="comment-form new-comment">
     <div class="form-floating comments container">
         <textarea class="form-control comment" placeholder="Leave a comment here" id="comment"></textarea>
-        <button type="submit" class="btn btn-primary">Comment</button>
+        <button type="submit" class="btn btn-info">Comment</button>
     </div>
 </form>
 <div class="container" style="padding: 50px;">
 {{#if comments}}
 {{> comment}}
 {{/if}}
+</div> --}}
+
+<div class="container" style="padding: 50px;">
+<div style="display: none" id="blog-id">{{id}}</div>
+<div class="card" style="margin-bottom: 30px; margin-top: 30px;" >
+    <div class="card-header">
+        Posted By: {{user.username}} on {{createDate}}
+    </div>
+    <div class="card-body">
+        <h2 class="card-title">{{title}}</h5>
+        <p class="card-text">{{content}}</p>
+    </div>
+</div>
+
+<h3>Comments</h3>
+
+{{#if comments}}
+{{> comment}}
+{{/if}}
+<form class="comment-form new-comment row g-3">
+    <div class="col-12 comments">
+        <textarea class="form-control comment" placeholder="Leave a comment here" id="comment"></textarea>
+        <button type="submit" class="btn btn-info" style="margin-top: 10px;">Comment</button>
+    </div>
+</form>
 </div>
 <script src="/js/comment.js"></script>
+
 
