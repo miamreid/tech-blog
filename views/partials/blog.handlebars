@@ -1,4 +1,4 @@
-{{#each blog as |blog|}}
+{{#each blogs as |blog|}}
 
 <div class="card">
     <div class="card-title">
@@ -8,7 +8,7 @@
     <div class="card-content">
         <p>{{blog.content}}</p>
     </div>
-    <p class="hidden" id="blog-id">{{blog.id}}</p>
+    <p style="display: none;" id="blog-id">{{blog.id}}</p>
 </div>
 
 {{/each}}

@@ -9,7 +9,7 @@ router.get('/', async (req, res) => {
       }
     ],
   })
-  .then((blog) => res.json(blog))
+  .then((blogs) => res.json(blogs))
   .catch((err) => {
     console.log(err);
     res.json(err);
@@ -22,7 +22,7 @@ router.post('/', (req, res) => {
     content: req.body.content,
     user_id: req.session.user_id
   })
-  .then((blog) => res.status(200).json(blog))
+  .then((blogs) => res.status(200).json(blogs))
   .catch((err) => {
     console.log(err);
     res.json(err);
@@ -39,7 +39,7 @@ router.put('/:id', (req, res) => {
       },
     }
   )
-  .then((blog) => res.status(200).json(blog))
+  .then((blogs) => res.status(200).json(blogs))
   .catch((err) => {
     console.log(err);
     res.json(err);
@@ -52,7 +52,7 @@ router.delete('/:id', (req, res) => {
       id: req.params.id,
     },
   })
-  .then((blog) => 
+  .then((blogs) => 
       res.status(200).json(blog))
   .catch((err) => {
     console.log(err);

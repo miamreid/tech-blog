@@ -1,12 +1,8 @@
 <div class="container" style="padding: 50px;">
-<div class="hidden" id="blog-id">{{blog.id}}</div>
-<h2>{{blog.title}}</h2>
+<div style="display: none;" id="blog-id">{{id}}</div>
+<h2>{{title}}</h2>
 
-<p>{{blog.content}}</p>
-</div>
-
-<div class="container" style="padding: 50px;">
-{{comment.comment}}
+<p>{{content}}</p>
 </div>
 
 <form class="comment-form">
@@ -15,9 +11,10 @@
         <button type="submit" class="new-comment btn btn-primary">Comment</button>
     </div>
 </form>
-
-{{#if comment}}
-{{> comment-info}}
-
+<div class="container" style="padding: 50px;">
+{{#if comments}}
+{{> comment}}
+{{/if}}
+</div>
 <script src="/js/comment.js"></script>
 
