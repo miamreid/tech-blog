@@ -17,6 +17,6 @@ Visitors can sign up to begin posting on their blog. Anyone can read the posts, 
 
 To leave a comment on another user's post, simply add a comment underneath the blog. Other users' comments will be available for you to see as well.
 
-[Link to Application](https://aqueous-earth-47907.herokuapp.com/)
+[Link to Application](https://aqueous-earth-47907.herokuapp.com/)<br />
 [View the Repo](https://github.com/miamreid/tech-blog)
 
